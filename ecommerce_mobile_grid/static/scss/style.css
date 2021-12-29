@@ -1,0 +1,11 @@
+ @media only screen and (max-width: 768px){
+#products_grid td{
+        display: inline-table !important;
+        width: 46% !important;
+    }
+
+#products_grid .table td {
+    margin-top: 15px !important;
+}
+
+}
