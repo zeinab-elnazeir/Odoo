@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- Form -->
+    <record id="website_menu_tree_inherit" model="ir.ui.view">
+      <field name="name">website.menu.tree.inherit</field>
+      <field name="model">website.menu</field>
+      <field name="inherit_id" ref="website.menu_tree" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='group_ids']" position="after">
+          <field name="category_check" />
+          <button name="compute_mega_content" type="object" string="Prepare Menu" class="btn-primary"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
