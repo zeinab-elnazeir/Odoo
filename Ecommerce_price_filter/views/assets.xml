@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+        <template id="assets_frontend" name="My style" inherit_id="website.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+
+                <link rel="stylesheet" type="text/scss" href="/Ecommerce_price_filter/static/lib/multirange/multirange_custom.scss"/>
+                <script type="text/javascript" src="/Ecommerce_price_filter/static/lib/multirange/multirange_custom.js"/>
+                <script type="text/javascript" src="/Ecommerce_price_filter/static/js/filter.js"/>
+
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
