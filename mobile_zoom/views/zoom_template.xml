@@ -1,0 +1,78 @@
+<odoo>
+  <data>
+
+   <template id="zoom_template"  inherit_id='web.layout' primary="True">
+    <xpath expr="//head/meta[last()]" position="after">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    </xpath>
+    <xpath expr="//head/link[last()]" position="after">
+            <link rel="preload" href="/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+            <t t-call-assets="web.assets_common" t-js="false"/>
+            <t t-call-assets="web.assets_frontend" t-js="false"/>
+            <link rel="stylesheet" href="/mobile_zoom/static/scss/styles.css"/>
+        </xpath>
+        <xpath expr="//head/script[@id='web.layout.odooscript'] | //head/script[last()]" position="after">
+            <script type="text/javascript">
+                odoo.session_info = <t t-raw="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>;
+                if (!/(^|;\s)tz=/.test(document.cookie)) {
+                    const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    document.cookie = `tz=${userTZ}; path=/`;
+                }
+            </script>
+            <t t-call-assets="web.assets_common_minimal_js" t-css="false" defer_load="True"/>
+            <t t-call-assets="web.assets_frontend_minimal_js" t-css="false" defer_load="True"/>
+            <t t-call="web.conditional_assets_tests"/>
+            <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True"/>
+            <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+            <script type="text/javascript" src='/mobile_zoom/static/js/jq.js' />
+            <script type="text/javascript" src='/mobile_zoom/static/js/mobile-zoom.js' />
+
+        </xpath>
+        <xpath expr="//t[@t-raw='0']" position="replace">
+            <div id="wrapwrap" t-attf-class="#{pageName or ''}">
+                <main class='mobile_zoom_body'>
+
+                    <t t-set="product_variant" t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+                <t t-set="product_images" t-value="product_variant._get_images() if product_variant else product._get_images()"/>
+               <div id="o-carousel-product" class="carousel slide" data-ride="carousel" data-interval="0">
+            <div class="carousel-outer position-relative">
+                <div class="carousel-inner">
+                    <t t-foreach="product_images" t-as="product_image">
+                        <div t-attf-class="carousel-item myimage#{' active' if product_image_first else ''}">
+                            <div t-if="product_image._name == 'product.image' and product_image.embed_code" class="d-flex align-items-center justify-content-center h-100 embed-responsive embed-responsive-16by9">
+                                <t t-raw="product_image.embed_code"/>
+                            </div>
+                            <div class='row ' t-else="">
+                                <div class='col-md-6 img-zoom-container' >
+                            <div onclick="showzoom()" t-field="product_image.image_1920" class=" d-flex align-items-center justify-content-center " t-options='{"widget": "image", "preview_image": "image_1024", "class": "product_detail_img mh-100"}'/>
+                        </div>
+                    </div>
+                <div id="myresult" class="img-zoom-result invisible">
+                </div>
+
+                    </div>    
+                    </t>
+
+                </div>  
+            </div>
+            
+
+            <div class="d-md-block  text-center">
+                <ol t-if="len(product_images) > 1" class="carousel-indicators d-inline-block position-static mx-auto my-0 p-1 text-left">
+                    <t t-foreach="product_images" t-as="product_image"><li t-attf-class="d-inline-block m-1 align-top {{'active' if product_image_first else ''}}" data-target="#o-carousel-product" t-att-data-slide-to="str(product_image_index)">
+                        <div t-field="product_image.image_128" t-options='{"widget": "image", "qweb_img_responsive": False, "class": "o_image_64_contain", "alt-field": "name"}'/>
+                        <i t-if="product_image._name == 'product.image' and product_image.embed_code" class="fa fa-2x fa-play-circle-o o_product_video_thumb"/>
+                    </li></t>
+                </ol>
+            </div>
+        </div>
+
+
+                    <t t-raw="0"/>
+                </main>
+                
+            </div>
+        </xpath>
+    </template>
+  </data>
+</odoo>

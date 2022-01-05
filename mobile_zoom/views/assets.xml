@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+
+        <template id="zoom_assets_frontend" name="My style" inherit_id="website.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+                <script type="text/javascript" src="/mobile_zoom/static/js/my_js.js"/>
+
+            </xpath>
+        </template>
+
+        <template id="zoom_assets_frontend_web" name="" inherit_id="web.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+                    <link rel="stylesheet" type="text/scss" href="/mobile_zoom/static/scss/styles.css"/>
+                    <script type="text/javascript" src="/mobile_zoom/static/js/mobile-zoom.js"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

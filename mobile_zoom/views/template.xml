@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+  <template id= 'mobile_shop_product_zoom' inherit_id="website_sale.shop_product_carousel" name="Mobile Shop Product Zoom">
+    <xpath expr="//div[hasclass('carousel-inner')]" position='attributes'>
+        <attribute name='id'>MobileZoom</attribute>         
+    </xpath>
+    <xpath expr="//div[hasclass('carousel-inner')]" position='before'>
+        <input type="hidden" name="zoom_product_id" id="zoom_product_id" t-att-value="product.id"/>       
+    </xpath>
+
+  </template>
+</data>
+</odoo>
