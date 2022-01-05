@@ -6,7 +6,7 @@
     'description': 'Add filter by price for shop page',
 
     'author': "Zeinab Elnazeir",
-    'website': "",
+    'website': "https://github.com/zeinab-elnazeir",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
