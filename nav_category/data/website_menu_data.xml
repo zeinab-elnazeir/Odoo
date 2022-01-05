@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record forcecreate="True" id="categories_menu" model="website.menu">
+            <field name="name">All Categories</field>
+            <field name="url">#</field>
+            <field name="is_mega_menu">True</field>
+            <field name="category_check">True</field>        
+        </record>
+
+    </data>
+</odoo>

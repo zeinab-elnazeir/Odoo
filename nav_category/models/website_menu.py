@@ -15,13 +15,13 @@ class WebsiteMenu(models.Model):
             if rec.category_check:
                 for category in categories:
                     
-                    link_str += """<div class="col-md-3 text-center"><nav class="nav flex-column mx-auto"><h5 class="border-nav o_default_snippet_text"><a href="/shop/category/"""+ str(category.id)+"""" class="nav-link mega-link o_default_snippet_text font-weight-bold" data-name="Menu Item">"""+category.name+"""</a></h5></br>"""
+                    link_str += """<div class="col-md-3 text-center p-1 px-3"><div class="card d-flex"><nav class="nav flex-column mx-auto"><h5 class="border-nav o_default_snippet_text"><a href="/shop/category/"""+ str(category.id)+"""" class="nav-link mega-link o_default_snippet_text font-weight-bold" data-name="Menu Item">"""+category.name+"""</a></h5></br>"""
                     
                     if category.child_id:
                         for c in category.child_id:
                             link_str += """<li><a href="/shop/category/"""+ str(c.id)+"""" class="nav-link  d-flex d-block o_default_snippet_text" data-name="Menu Item">"""+c.name+"""</a></li>"""
 
-                    link_str+= '</nav></div>'
+                    link_str+= '</nav></div></div>'
 
                 templates = '''<section class="s_mega_menu_menu_image_menu py-4">
                         <div class="container">

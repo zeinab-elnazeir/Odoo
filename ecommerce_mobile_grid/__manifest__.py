@@ -6,7 +6,7 @@
     'description': 'Modify grid view in shop to appear in mobile 3 X 2.',
 
     'author': "Zeinab Elnazeir",
-    'website': "https://github.com/zeinab-elnazeir",
+    'website': "https://github.com/zeinab-elnazeir/Odoo",
    
     'category': '',
     'version': '0.1',
