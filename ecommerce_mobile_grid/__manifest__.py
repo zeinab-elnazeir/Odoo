@@ -22,4 +22,9 @@
 
     ],
 
+    'images': [
+        'static/description/Screenshot.png',
+     
+    ],
+
 }
